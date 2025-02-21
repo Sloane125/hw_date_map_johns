@@ -1,0 +1,31 @@
+---
+title: "Homework 3: lubridate and purrr"
+author: "Sloane Johns"
+date: "2025-02-20"
+output: html_document
+---
+
+```{r}
+# libraries
+library(tidyverse)
+library(lubridate)
+library(purrr)
+```
+
+** Exercise 1: Advanced Date Manipulation with lubridate
+** Question 1:
+Generate a sequence of dates from *January 1, 2015* to *December 31, 2025*, spaced by every *two months*. Extract the *year*, *quarter*, and *ISO week number* for each date.
+```{r}
+# Generate a sequence of dates spaced by 2 months
+date_seq <- seq(ymd("2015-01-01"), ymd("2025-12-31"), by = "2 months")
+
+# extract year
+date_seq %>% year()
+
+# extract quarter
+date_seq %>% quarter()
+
+# extract ISO week number
+date_seq %>% isoweek()
+```
+
