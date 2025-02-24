@@ -40,14 +40,34 @@ sample_dates <- ymd(sample_dates)
 
 # difference in months
 diff1_month <- interval(sample_dates[1], sample_dates[2]) %/% months(1)
-print(paste("The difference between", sample_dates[1], "and", sample_dates[2], "is", diff1_month, "months."))
 diff2_month <- interval(sample_dates[3], sample_dates[4]) %/% months(1)
-print(paste("The difference between", sample_dates[3], "and", sample_dates[4], "is", diff2_month, "months."))
 
 # difference in weeks
 diff1_week <- interval(sample_dates[1], sample_dates[2]) %/% weeks(1)
-print(paste("The difference between", sample_dates[1], "and", sample_dates[2], "is", diff1_week, "weeks."))
 diff2_week <- interval(sample_dates[3], sample_dates[4]) %/% weeks(1)
+
+# print
+print(paste("The difference between", sample_dates[1], "and", sample_dates[2], "is", diff1_month, "months."))
+print(paste("The difference between", sample_dates[3], "and", sample_dates[4], "is", diff2_month, "months."))
+print(paste("The difference between", sample_dates[1], "and", sample_dates[2], "is", diff1_week, "weeks."))
 print(paste("The difference between", sample_dates[3], "and", sample_dates[4], "is", diff2_week, "weeks."))
+```
+&nbsp;
+
+### Exercise 3: Higher-Order Functions with purrr
+&nbsp;
+Using `map()` and `map_dbl()`, compute the **mean**, **median**, and **standard deviation** for each numeric vector in the following list:
+```{r}
+num_lists <- list(c(4, 16, 25, 36, 49), c(2.3, 5.7, 8.1, 11.4), c(10, 20, 30, 40, 50))
+
+# mean
+num_lists %>% map(mean)
+
+# median
+num_lists %>% map(median)
+
+# standard deviation
+num_lists %>% map(sd)
+
 ```
 
