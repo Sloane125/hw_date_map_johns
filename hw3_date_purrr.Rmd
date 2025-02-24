@@ -1,20 +1,21 @@
 ---
 title: "Homework 3: lubridate and purrr"
 author: "Sloane Johns"
-date: "2025-02-20"
+date: "2025-02-25"
 output: html_document
 ---
-
-```{r}
+&nbsp;  
+```{r, message=FALSE}
 # libraries
 library(tidyverse)
 library(lubridate)
 library(purrr)
 ```
+&nbsp;  
 
-** Exercise 1: Advanced Date Manipulation with lubridate
-** Question 1:
-Generate a sequence of dates from *January 1, 2015* to *December 31, 2025*, spaced by every *two months*. Extract the *year*, *quarter*, and *ISO week number* for each date.
+### Exercise 1: Advanced Date Manipulation with lubridate
+&nbsp;  
+Generate a sequence of dates from **January 1, 2015** to **December 31, 2025**, spaced by every **two months**. Extract the **year**, **quarter**, and **ISO week number** for each date.
 ```{r}
 # Generate a sequence of dates spaced by 2 months
 date_seq <- seq(ymd("2015-01-01"), ymd("2025-12-31"), by = "2 months")
@@ -27,5 +28,26 @@ date_seq %>% quarter()
 
 # extract ISO week number
 date_seq %>% isoweek()
+```
+&nbsp;
+
+### Exercise 2: Complex Date Arithmetic
+&nbsp;  
+Given the following dates, compute the difference in **months** and **weeks** between each consecutive pair.
+```{r}
+sample_dates <- c("2018-03-15", "2020-07-20", "2023-01-10", "2025-09-05")
+sample_dates <- ymd(sample_dates)
+
+# difference in months
+diff1_month <- interval(sample_dates[1], sample_dates[2]) %/% months(1)
+print(paste("The difference between", sample_dates[1], "and", sample_dates[2], "is", diff1_month, "months."))
+diff2_month <- interval(sample_dates[3], sample_dates[4]) %/% months(1)
+print(paste("The difference between", sample_dates[3], "and", sample_dates[4], "is", diff2_month, "months."))
+
+# difference in weeks
+diff1_week <- interval(sample_dates[1], sample_dates[2]) %/% weeks(1)
+print(paste("The difference between", sample_dates[1], "and", sample_dates[2], "is", diff1_week, "weeks."))
+diff2_week <- interval(sample_dates[3], sample_dates[4]) %/% weeks(1)
+print(paste("The difference between", sample_dates[3], "and", sample_dates[4], "is", diff2_week, "weeks."))
 ```
 
