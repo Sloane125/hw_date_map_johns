@@ -1,20 +1,22 @@
 ---
-title: "Homework 3: lubridate and purrr"
+title: 'Homework 3: lubridate and purrr'
 author: "Sloane Johns"
 date: "2025-02-25"
-output: html_document
+output:
+  pdf_document: default
+  pdf: default
 ---
-&nbsp;  
+ 
 ```{r, message=FALSE}
 # libraries
 library(tidyverse)
 library(lubridate)
 library(purrr)
 ```
-&nbsp;  
 
-### Exercise 1: Advanced Date Manipulation with lubridate
-&nbsp;  
+#### Exercise 1: Advanced Date Manipulation with lubridate
+
+
 Generate a sequence of dates from **January 1, 2015** to **December 31, 2025**, spaced by every **two months**. Extract the **year**, **quarter**, and **ISO week number** for each date.
 ```{r}
 # Generate a sequence of dates spaced by 2 months
@@ -29,10 +31,10 @@ date_seq %>% quarter()
 # extract ISO week number
 date_seq %>% isoweek()
 ```
-&nbsp;
 
-### Exercise 2: Complex Date Arithmetic
-&nbsp;  
+#### Exercise 2: Complex Date Arithmetic
+
+
 Given the following dates, compute the difference in **months** and **weeks** between each consecutive pair.
 ```{r}
 sample_dates <- c("2018-03-15", "2020-07-20", "2023-01-10", "2025-09-05")
@@ -47,18 +49,23 @@ diff1_week <- interval(sample_dates[1], sample_dates[2]) %/% weeks(1)
 diff2_week <- interval(sample_dates[3], sample_dates[4]) %/% weeks(1)
 
 # print
-print(paste("The difference between", sample_dates[1], "and", sample_dates[2], "is", diff1_month, "months."))
-print(paste("The difference between", sample_dates[1], "and", sample_dates[2], "is", diff1_week, "weeks."))
-print(paste("The difference between", sample_dates[3], "and", sample_dates[4], "is", diff2_month, "months."))
-print(paste("The difference between", sample_dates[3], "and", sample_dates[4], "is", diff2_week, "weeks."))
+print(paste("The difference between", sample_dates[1], 
+            "and", sample_dates[2], "is", diff1_month, "months."))
+print(paste("The difference between", sample_dates[1], 
+            "and", sample_dates[2], "is", diff1_week, "weeks."))
+print(paste("The difference between", sample_dates[3], 
+            "and", sample_dates[4], "is", diff2_month, "months."))
+print(paste("The difference between", sample_dates[3], 
+            "and", sample_dates[4], "is", diff2_week, "weeks."))
 ```
-&nbsp;
 
-### Exercise 3: Higher-Order Functions with purrr
-&nbsp;
+#### Exercise 3: Higher-Order Functions with purrr
+
+
 Using `map()` and `map_dbl()`, compute the **mean**, **median**, and **standard deviation** for each numeric vector in the following list:
 ```{r}
-num_lists <- list(c(4, 16, 25, 36, 49), c(2.3, 5.7, 8.1, 11.4), c(10, 20, 30, 40, 50))
+num_lists <- list(c(4, 16, 25, 36, 49), 
+                  c(2.3, 5.7, 8.1, 11.4), c(10, 20, 30, 40, 50))
 
 # mean
 num_lists %>% map(mean)
@@ -70,10 +77,10 @@ num_lists %>% map(median)
 num_lists %>% map(sd)
 
 ```
-&nbsp;
 
-### Exercise 4: Combining lubridate and purrr
-&nbsp;
+#### Exercise 4: Combining lubridate and purrr
+
+
 Given a list of mixed date formats, use `map()` and `possibly()` from **purrr** to safely convert the to **Date** format and extract the **month name**.
 ```{r}
 date_strings <- list("2023-06-10", "2022/12/25", "15-Aug-2021", "InvalidDate")
